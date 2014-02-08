@@ -4,6 +4,9 @@ body {
   height: 100%;
   margin: 0;
   text-align: center;
+  font-family: "Helvetica Neue", Helvetica, 'PT Sans', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 #local-video video {
   min-width: 100%;
@@ -13,8 +16,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-filter: blur(10px);
-  filter: blur(10px);
+  -webkit-filter: blur(4px) grayscale(100%) brightness(130%) contrast(100%);
+  filter: blur(4px) grayscale(100%) brightness(130%) contrast(100%);
 }
 #remote-video {
   display: none;
@@ -26,4 +29,17 @@ body {
 }
 .page.hidden {
   display: none;
+}
+#messages {
+  text-align: left;
+  width: 420px;
+}
+#messages li {
+  border-left-width: 0.5em;
+  border-left-style: solid;
+  margin-bottom: 1px;
+  padding: 0.75em 1.5em 0.75em 1em;
+}
+#messages li p {
+  margin: 0;
 }
