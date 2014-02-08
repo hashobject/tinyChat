@@ -19,7 +19,8 @@ body {
 #remote-video {
   display: none;
 }
-#message-input {
+#message-input,
+#messages {
   position: relative;
   z-index: 2;
 }

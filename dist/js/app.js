@@ -675,14 +675,14 @@
 })();
 
 page('/', function(){
-  document.getElementById('landing-page').classList.remove('hidden');
-  document.getElementById('chat-page').classList.add('hidden');
+  $('#landing-page').removeClass('hidden');
+  $('#chat-page').addClass('hidden');
   setupLandingPage();
 });
 
 page('/r/:chatId', function(ctx){
-  document.getElementById('chat-page').classList.remove('hidden');
-  document.getElementById('landing-page').classList.add('hidden');
+  $('#chat-page').removeClass('hidden');
+  $('#landing-page').addClass('hidden');
   var chatId = ctx.params.chatId;
   startChat(chatId);
 });
@@ -691,7 +691,7 @@ page('/r/:chatId', function(ctx){
 page.start();
 
 function setupLandingPage(){
-  document.getElementById('new-chat-button').addEventListener('click', function(){
+  $('#new-chat-button').on('click', function(){
     var newChatId = uuid.v4();
     page.show('/r/' + newChatId);
   });
@@ -702,26 +702,35 @@ function startChat(roomId){
   // Connect URL
   var url = 'https://goinstant.net/910bc8662f93/staticshowdown';
 
-
+  // DOM refs
+  var $localVideo = $('#local-video'),
+      $remoteVideo = $('#remote-video')
+      $messageInput = $('#message-input'),
+      $messages = $('#messages');
   // reference to the pair.
   var pair = null;
 
 
+  var renderMessage = function(message, ts, mine){
+    var html = '<div>' + message + '</div>';
+    $messages.append(html);
+  };
+
   var setupChatPage = function(pair){
-    var $messageInput = document.getElementById('message-input'),
-        $messages = document.getElementById('messages');
-    $messageInput.addEventListener('keydown', function(evt) {
+
+    $messageInput.on('keydown', function(evt) {
       if (evt.keyCode === 13) {
-        var newMessage = $messageInput.value,
-            html = '<div>' + newMessage + '</div>';
-        //$messages.appendChild(html);
+        var newMessage = $messageInput.val(),
+            messageStr = JSON.stringify({ time: Date.now(), msg: newMessage});
+        renderMessage(newMessage, Date.now(), true);
         // TODO (anton) can channel be reliable?
-        pair.channels.unreliable.send({ time: Date.now(), msg: newMessage});
+        pair.channels.unreliable.send(messageStr);
       }
     });
   };
   var renderNewMessage = function(evt){
-    console.log('message was added', evt);
+    var messageObj = JSON.parse(evt.data);
+    renderMessage(messageObj.msg, Date.now(), true);
   };
 
   // Connect to GoInstant
@@ -735,10 +744,6 @@ function startChat(roomId){
       return;
     }
 
-    roomObj.on('join', function(userObject) {
-      console.log(userObject.displayName + ' has joined the room!');
-    });
-
     window.goRTC = new goinstant.integrations.GoRTC({
       room: roomObj,
       debug: true,
@@ -747,7 +752,7 @@ function startChat(roomId){
     });
 
     goRTC.on('localStream', function() {
-      document.getElementById('local-video').appendChild(goRTC.localVideo);
+      $localVideo.append(goRTC.localVideo);
     });
 
     goRTC.on('localStreamStopped', function() {
@@ -760,11 +765,12 @@ function startChat(roomId){
       console.log("peer added. all peers", goRTC.webrtc.peers);
       // assign peer to only possible pair. 
       if(!pair){
+        // TODO (anton) check simple page reload. we need to track amount of peers
         // TODO (anton) Add check if pair added!
         pair = peer;
         // TODO (anton) can channel be reliable?
         pair.channels.unreliable.onmessage = renderNewMessage;
-        document.getElementById('remote-video').appendChild(peer.video);
+        $remoteVideo.append(peer.video);
         setupChatPage(pair);
       }
     });
