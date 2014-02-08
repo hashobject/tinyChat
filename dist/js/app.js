@@ -675,12 +675,17 @@
 })();
 
 page('/', function(){
+  document.getElementById('landing-page').classList.remove('hidden');
+  document.getElementById('chat-page').classList.add('hidden');
   setupLandingPage();
 });
 
 page('/r/:chatId', function(ctx){
+  document.getElementById('chat-page').classList.remove('hidden');
+  document.getElementById('landing-page').classList.add('hidden');
   var chatId = ctx.params.chatId;
   startChat(chatId);
+  setupChatPage();
 });
 
 
@@ -688,12 +693,23 @@ page.start();
 
 function setupLandingPage(){
   document.getElementById('new-chat-button').addEventListener('click', function(){
-    console.log('xxx');
     var newChatId = uuid.v4();
     page.show('/r/' + newChatId);
   });
 }
 
+
+function setupChatPage(){
+  var $messageInput = document.getElementById('message-input'),
+      $messages = document.getElementById('messages');
+  $messageInput.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === 13) {
+      var newMessage = $messageInput.value,
+          html = '<div>' + newMessage + '</div>';
+      $messages.appendChild(html);
+    }
+  });
+}
 
 function startChat(roomId){
   // Connect URL
@@ -705,15 +721,17 @@ function startChat(roomId){
     if (err) {
       throw err;
     }
-    console.log('connected', roomObj);
     if (!goinstant.integrations.GoRTC.support) {
       window.alert('Your browser does not support webrtc');
       return;
     }
 
+    roomObj.on('join', function(userObject) {
+      console.log(userObject.displayName + ' has joined the room!');
+    });
+
     window.goRTC = new goinstant.integrations.GoRTC({
       room: roomObj,
-      autoStart: true,
       debug: true,
       video: true,
       audio: false
@@ -738,7 +756,6 @@ function startChat(roomId){
         peer.video.parentNode.removeChild(peer.video);
       }
     });
-
 
     goRTC.start(function(err) {
       console.log('started');

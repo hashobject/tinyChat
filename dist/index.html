@@ -9,17 +9,17 @@
     <link href="/css/app.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div id="landing-page" class="page">
+    <div id="landing-page" class="page hidden">
       <button id="new-chat-button">New chat</button>
     </div>
-    <div id="chat-page" class="page">
+    <div id="chat-page" class="page hidden">
       <div id="chat-seetings">
         <div id="local-video"></div>
       </div>
       <div id="chat-box">
         <div id="remote-video"></div>
         <div id="messages"></div>
-        <div id="message-input"></div>
+        <input id="message-input">
       </div>
     </div>
     <script src="https://cdn.goinstant.net/v1/platform.min.js"></script>
