@@ -33,6 +33,14 @@ module.exports = function(grunt) {
     },
 
 
+    browserify: {
+      dist: {
+        files: {
+          'dist/js/app.js': ['js/*.js'],
+        }
+      }
+    },
+
 
     watch: {
       src: {
@@ -41,16 +49,15 @@ module.exports = function(grunt) {
       }
     }
 
-
-
   });
-
 
 
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-browserify');
 
-  grunt.registerTask('build', ['jade:compile', 'stylus:compile']);
+  grunt.registerTask('build', ['jade:compile', 'stylus:compile', 'browserify:dist']);
 
 };
