@@ -796,7 +796,7 @@ function startChat(roomId){
   };
   var renderNewMessage = function(evt){
     var messageObj = JSON.parse(evt.data);
-    renderMessage(messageObj.msg, Date.now(), true);
+    renderMessage(messageObj.msg, Date.now(), false);
   };
 
   // Connect to GoInstant
