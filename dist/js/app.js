@@ -766,9 +766,9 @@ function startChat(roomId){
   var renderMessage = function(message, ts, mine){
     var html = '<li ';
     if(mine){
-      html += 'class="mine"';
+      html += 'class="mine">';
     }else{
-      html += 'class="not-mine"';
+      html += 'class="not-mine">';
     }
     html += message;
     html += '</li>';
