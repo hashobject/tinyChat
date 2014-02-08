@@ -11,7 +11,6 @@ page('/r/:chatId', function(ctx){
   startChat(chatId);
 });
 
-
 page.start();
 
 function setupLandingPage(){
