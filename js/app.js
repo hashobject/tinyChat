@@ -30,7 +30,12 @@ function startChat(roomId){
       $remoteVideo = $('#remote-video'),
       $messageInputContainer = $('#message-input'),
       $messageInput = $messageInputContainer.find('input'),
-      $messages = $('#messages');
+      $messages = $('#messages'),
+      $inviteLink = $('#invite-link a');
+
+  var inviteLink = "mailto:?subject=Let's chat together";
+  inviteLink += '&body=Join me on '+ window.location.href;
+  $inviteLink.attr('href', inviteLink);
   // reference to the pair.
   var pair = null;
 
