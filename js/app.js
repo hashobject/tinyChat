@@ -27,16 +27,30 @@ function startChat(roomId){
 
   // DOM refs
   var $localVideo = $('#local-video'),
-      $remoteVideo = $('#remote-video')
-      $messageInput = $('#message-input'),
+      $remoteVideo = $('#remote-video'),
+      $messageInputContainer = $('#message-input'),
+      $messageInput = $messageInputContainer.find('input'),
       $messages = $('#messages');
   // reference to the pair.
   var pair = null;
 
 
   var renderMessage = function(message, ts, mine){
-    var html = '<div>' + message + '</div>';
-    $messages.append(html);
+    var html = '<li ';
+    if(mine){
+      html += 'class="mine"';
+    }else{
+      html += 'class="not-mine"';
+    }
+    html += message;
+    html += '</li>';
+    $messageInputContainer.before(html);
+  };
+
+  var chan = function(pair){
+    // picking any channel here. Probably unreliable is the key in channels object
+    var channelName = _.first(_.keys(pair.channels));
+    return pair.channels[channelName];
   };
 
   var setupChatPage = function(pair){
@@ -48,8 +62,7 @@ function startChat(roomId){
         var newMessage = $messageInput.val(),
             messageStr = JSON.stringify({ time: Date.now(), msg: newMessage});
         renderMessage(newMessage, Date.now(), true);
-        // TODO (anton) can channel be reliable?
-        pair.channels.unreliable.send(messageStr);
+        chan(pair).send(messageStr);
       }
     });
   };
@@ -91,10 +104,8 @@ function startChat(roomId){
       // assign peer to only possible pair. 
       if(!pair){
         // TODO (anton) check simple page reload. we need to track amount of peers
-        // TODO (anton) Add check if pair added!
         pair = peer;
-        // TODO (anton) can channel be reliable?
-        pair.channels.unreliable.onmessage = renderNewMessage;
+        chan(pair).onmessage = renderNewMessage;
         $remoteVideo.append(peer.video);
         setupChatPage(pair);
       }
@@ -110,6 +121,7 @@ function startChat(roomId){
 
     goRTC.start(function(err) {
       console.log('started');
+      // TODO (anton) show some progress here maybe.
       if (err) {
         throw err;
       }
