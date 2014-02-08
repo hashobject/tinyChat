@@ -33,18 +33,17 @@ module.exports = function(grunt) {
     },
 
 
-    browserify: {
+    concat: {
       dist: {
         files: {
-          'dist/js/app.js': ['js/*.js'],
+          'dist/js/app.js': ['js/uuid.js', 'js/page.js', 'js/app.js'],
         }
       }
     },
 
-
     watch: {
       src: {
-        files: ['styl/*.styl', 'views/*.jade'],
+        files: ['styl/*.styl', 'views/*.jade', 'js/*.js'],
         tasks: ['build']
       }
     }
@@ -56,8 +55,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-browserify');
 
-  grunt.registerTask('build', ['jade:compile', 'stylus:compile', 'browserify:dist']);
+  grunt.registerTask('build', ['jade:compile', 'stylus:compile', 'concat:dist']);
 
 };

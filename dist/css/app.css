@@ -1,3 +1,21 @@
+html,
 body {
-  color: #f00;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+}
+#local-video video {
+  min-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+}
+#remote-video {
+  display: none;
 }
