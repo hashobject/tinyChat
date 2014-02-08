@@ -1,0 +1,33 @@
+{
+  "name": "tinychat",
+  "version": "0.1.0",
+  "description": "Tinychat applicatiom",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/staticshowdown/ss14-team-176.git"
+  },
+  "keywords": [
+    "chat",
+    "webrtc"
+  ],
+  "author": "Hashobject team",
+  "gitHead": "d173439ac1cc07a16701bcf9888cacc49dca0bfb",
+  "bugs": {
+    "url": "https://github.com/staticshowdown/ss14-team-176/issues"
+  },
+  "dependencies": {
+    "jade": "~1.1.5",
+    "stylus": "~0.42.2",
+    "nib": "~1.0.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-stylus": "~0.12.0",
+    "grunt-contrib-jade": "~0.9.1",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
