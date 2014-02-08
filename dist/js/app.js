@@ -778,6 +778,8 @@ function startChat(roomId){
     goRTC.on('peerStreamRemoved', function(peer) {
       if (peer.video && peer.video.parentNode) {
         peer.video.parentNode.removeChild(peer.video);
+        // TODO (anton) we need to do some DOM manipulatios here. release resources, notify that user left chat.
+        pair = null;
       }
     });
 
