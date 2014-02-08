@@ -4,6 +4,7 @@
   * loading indicator
   * marketing page
   * favicon
+  * mailto link like ghost blog
 
 
 ## Used
