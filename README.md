@@ -5,7 +5,6 @@
   * marketing page
   * favicon
   * mailto link like ghost blog
-  * fix drag issue with typing new message
   * fix mailto link
   * remove /r/ from url
   * try changing netwrok type connection

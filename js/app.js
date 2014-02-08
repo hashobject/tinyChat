@@ -60,7 +60,7 @@ function startChat(roomId){
 
   var setupChatPage = function(pair){
 
-    //$messages.drags();
+    $messages.drags({handle: 'li:not(#message-input)'});
     $messageInput.on('keydown', function(evt) {
       if (evt.keyCode === 13) {
         var newMessage = $messageInput.val(),
