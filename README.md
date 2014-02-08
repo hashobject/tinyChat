@@ -5,12 +5,15 @@
   * marketing page
   * favicon
   * mailto link like ghost blog
+  * fix drag issue with typing new message
+  * fix mailto link
 
 
 ## Used
 
   * goinstant
   * webrtc
+  * svg
   * css filters
   * grunt
   * underscore

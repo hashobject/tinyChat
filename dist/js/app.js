@@ -783,7 +783,7 @@ function startChat(roomId){
 
   var setupChatPage = function(pair){
 
-    $messages.drags();
+    $messages.find('li:not(.message-input)').drags();
 
     $messageInput.on('keydown', function(evt) {
       if (evt.keyCode === 13) {
