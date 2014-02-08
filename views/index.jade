@@ -8,15 +8,15 @@ html(lang='en')
     meta(content='width=device-width, initial-scale=1.0, user-scalable=no', name='viewport')
     link(href='/css/app.css', rel='stylesheet', type='text/css')
   body
-    #landing-page.page
+    #landing-page.page.hidden
       button#new-chat-button New chat
-    #chat-page.page
+    #chat-page.page.hidden
       #chat-seetings
         #local-video
       #chat-box
         #remote-video
         #messages
-        #message-input
+        input#message-input
     script(src='https://cdn.goinstant.net/v1/platform.min.js')
     script(src='https://cdn.goinstant.net/integrations/gortc/latest/gortc.min.js')
     script(src='/js/app.js')

@@ -19,3 +19,6 @@ body {
 #remote-video {
   display: none;
 }
+.page.hidden {
+  display: none;
+}
