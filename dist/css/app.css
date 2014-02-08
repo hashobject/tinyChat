@@ -137,6 +137,9 @@ a {
 }
 #chat-settings {
   background-color: #1f282d;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 420px;
 }
 #chat-settings .note {
@@ -147,22 +150,34 @@ a {
 i.settings-toggle {
   display: inline-block;
   height: 4.5em;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 4.5em;
+}
+i.settings-toggle svg {
+  position: absolute;
+  top: 50%;
+  right: 50%;
 }
 .settings-show {
   background-color: #1f282d;
 }
 .settings-show svg {
   height: 20px;
+  margin-top: -10px;
+  margin-right: -10px;
 }
 .settings-hide {
   background-color: #e66047;
 }
 .settings-hide svg {
   height: 14px;
+  margin-top: -7px;
+  margin-right: -7px;
 }
 #invite-link {
-  padding: 0.75em 1.5em 0.75em 1em;
+  padding: 0.75em 4.5em 0.75em 1em;
 }
 #local-video {
   line-height: 0;
