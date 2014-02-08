@@ -30,14 +30,23 @@ function setupChatPage(){
     if (evt.keyCode === 13) {
       var newMessage = $messageInput.value,
           html = '<div>' + newMessage + '</div>';
-      $messages.appendChild(html);
+      //$messages.appendChild(html);
     }
   });
+}
+
+
+function renderNewMessage(evt){
+  console.log('message was added', evt);
 }
 
 function startChat(roomId){
   // Connect URL
   var url = 'https://goinstant.net/910bc8662f93/staticshowdown';
+
+
+  // reference to the pair.
+  var pair = null;
 
   // Connect to GoInstant
   goinstant.connect(url, {room: roomId}, function(err, platformObj, roomObj) {
@@ -72,6 +81,12 @@ function startChat(roomId){
     });
 
     goRTC.on('peerStreamAdded', function(peer) {
+      console.log("peer added. all peers", goRTC.webrtc.peers);
+      // assign peer to only possible pair. 
+      // TODO (anton) Add check if pair added!
+      pair = peer;
+      // TODO (anton) can channel be reliable?
+      pair.channels.unreliable.onmessage = renderNewMessage;
       document.getElementById('remote-video').appendChild(peer.video);
     });
 

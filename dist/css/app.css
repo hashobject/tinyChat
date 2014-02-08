@@ -19,6 +19,10 @@ body {
 #remote-video {
   display: none;
 }
+#message-input {
+  position: relative;
+  z-index: 2;
+}
 .page.hidden {
   display: none;
 }
