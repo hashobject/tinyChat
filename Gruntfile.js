@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         files: {
-          'dist/js/app.js': ['js/uuid.js', 'js/page.js', 'js/app.js'],
+          'dist/js/app.js': ['js/uuid.js', 'js/page.js', 'js/drags.js', 'js/app.js'],
         }
       }
     },
