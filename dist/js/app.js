@@ -685,7 +685,6 @@ page('/r/:chatId', function(ctx){
   document.getElementById('landing-page').classList.add('hidden');
   var chatId = ctx.params.chatId;
   startChat(chatId);
-  setupChatPage();
 });
 
 
@@ -699,23 +698,6 @@ function setupLandingPage(){
 }
 
 
-function setupChatPage(){
-  var $messageInput = document.getElementById('message-input'),
-      $messages = document.getElementById('messages');
-  $messageInput.addEventListener('keydown', function(evt) {
-    if (evt.keyCode === 13) {
-      var newMessage = $messageInput.value,
-          html = '<div>' + newMessage + '</div>';
-      //$messages.appendChild(html);
-    }
-  });
-}
-
-
-function renderNewMessage(evt){
-  console.log('message was added', evt);
-}
-
 function startChat(roomId){
   // Connect URL
   var url = 'https://goinstant.net/910bc8662f93/staticshowdown';
@@ -723,6 +705,24 @@ function startChat(roomId){
 
   // reference to the pair.
   var pair = null;
+
+
+  var setupChatPage = function(pair){
+    var $messageInput = document.getElementById('message-input'),
+        $messages = document.getElementById('messages');
+    $messageInput.addEventListener('keydown', function(evt) {
+      if (evt.keyCode === 13) {
+        var newMessage = $messageInput.value,
+            html = '<div>' + newMessage + '</div>';
+        //$messages.appendChild(html);
+        // TODO (anton) can channel be reliable?
+        pair.channels.unreliable.send({ time: Date.now(), msg: newMessage});
+      }
+    });
+  };
+  var renderNewMessage = function(evt){
+    console.log('message was added', evt);
+  };
 
   // Connect to GoInstant
   goinstant.connect(url, {room: roomId}, function(err, platformObj, roomObj) {
@@ -759,11 +759,14 @@ function startChat(roomId){
     goRTC.on('peerStreamAdded', function(peer) {
       console.log("peer added. all peers", goRTC.webrtc.peers);
       // assign peer to only possible pair. 
-      // TODO (anton) Add check if pair added!
-      pair = peer;
-      // TODO (anton) can channel be reliable?
-      pair.channels.unreliable.onmessage = renderNewMessage;
-      document.getElementById('remote-video').appendChild(peer.video);
+      if(!pair){
+        // TODO (anton) Add check if pair added!
+        pair = peer;
+        // TODO (anton) can channel be reliable?
+        pair.channels.unreliable.onmessage = renderNewMessage;
+        document.getElementById('remote-video').appendChild(peer.video);
+        setupChatPage(pair);
+      }
     });
 
     goRTC.on('peerStreamRemoved', function(peer) {
