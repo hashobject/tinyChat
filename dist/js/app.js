@@ -786,6 +786,7 @@ function startChat(roomId){
             messageStr = JSON.stringify({ time: Date.now(), msg: newMessage});
         renderMessage(newMessage, Date.now(), true);
         chan(pair).send(messageStr);
+        $messageInput.val('');
       }
     });
   };
