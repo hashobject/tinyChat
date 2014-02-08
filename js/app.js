@@ -78,7 +78,7 @@ function startChat(roomId){
       throw err;
     }
     if (!goinstant.integrations.GoRTC.support) {
-      window.alert('Your browser does not support webrtc');
+      window.alert('Your browser does not support video chat');
       return;
     }
 
