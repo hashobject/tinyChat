@@ -116,8 +116,16 @@ a {
 :-ms-input-placeholder {
   color: #a3a3a3;
 }
-#remote-video {
-  display: none;
+#remote-video video {
+  min-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-filter: blur(4px) grayscale(100%) brightness(130%) contrast(100%);
+  filter: blur(4px) grayscale(100%) brightness(130%) contrast(100%);
 }
 #message-input,
 #messages {
@@ -135,6 +143,23 @@ a {
   background-color: #2eb497;
   padding: 0.75em 1.5em 0.75em 1em;
   text-shadow: none;
+}
+i.settings-toggle {
+  display: inline-block;
+  height: 4.5em;
+  width: 4.5em;
+}
+.settings-show {
+  background-color: #1f282d;
+}
+.settings-show svg {
+  height: 20px;
+}
+.settings-hide {
+  background-color: #e66047;
+}
+.settings-hide svg {
+  height: 14px;
 }
 #invite-link {
   padding: 0.75em 1.5em 0.75em 1em;

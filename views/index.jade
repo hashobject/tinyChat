@@ -13,13 +13,17 @@ html(lang='en')
       button#new-chat-button New chat
     #chat-page.page.hidden
       #chat-settings
+        i.settings-show.settings-toggle
+          include ../design/settings.svg
+        i.settings-hide.settings-toggle
+          include ../design/close.svg
         #invite-link You need partner to chat with.<br>
-          a(href="") Send an invite
+          a(href="", target="_blank") Send an invite
           |.
         #local-video
         .note Your video. This is what other person is seeing.
       #chat-box
-        #local-video
+        #remote-video
         ul#messages
           li.mine
             p cos for me it's like: switching to master - no changes in files; switching to version-1 - changes are visible
