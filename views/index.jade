@@ -13,7 +13,8 @@ html(lang='en')
       button#new-chat-button New chat
     #chat-page.page.hidden
       #chat-seetings
-        #remote-video
+        #invite-link
+        #local-video
       #chat-box
         #local-video
         ul#messages
@@ -33,8 +34,8 @@ html(lang='en')
             p I'm done for today.
           li.mine
             p Bye!
-          li#message-input
-            input
+          li#message-input.mine
+            input(placeholder="Type in here")
     script(src='//code.jquery.com/jquery-2.1.0.min.js')
     script(src='https://cdn.goinstant.net/v1/platform.min.js')
     script(src='https://cdn.goinstant.net/integrations/gortc/latest/gortc.min.js')

@@ -10,16 +10,25 @@ body
   font-size: 16px;
   line-height: 1.5;
 
-#local-video video
-  min-width: 100%;
-  max-height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-filter: blur(4px) grayscale(100%) brightness(130%) contrast(100%);
-  filter: blur(4px) grayscale(100%) brightness(130%) contrast(100%);
+::-webkit-input-placeholder
+  color: #a3a3a3;
+:-moz-placeholder /* Firefox 18- */
+  color: #a3a3a3;  
+::-moz-placeholder /* Firefox 19+ */
+  color: #a3a3a3;
+:-ms-input-placeholder 
+  color: #a3a3a3;
+
+// #remote-video video
+//   min-width: 100%;
+//   max-height: 100%;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   -webkit-filter: blur(4px) grayscale(100%) brightness(130%) contrast(100%);
+//   filter: blur(4px) grayscale(100%) brightness(130%) contrast(100%);
 
 
 #remote-video
@@ -39,9 +48,31 @@ body
   width: 420px;
 
   & li
-    border-left-width: 0.5em 
+    background: rgba(0,0,0,0.6);
+    border-left-width: 0.5em;
     border-left-style: solid;
+    color: white;
     margin-bottom: 1px;
-    padding: .75em 1.5em .75em 1em
+    padding: .75em 1.5em .75em 1em;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    &.mine
+      border-left-color: #2eb497;
+    &.not-mine
+      border-left-color: #e66047;
+
+    &#message-input
+      padding: 0;
+
+      & input
+        padding: .75em 1.5em .75em 1em;
+        background-color: transparent;
+        border: none;
+        box-sizing: border-box;
+        color: #bebebe;
+        font-size: 1em;
+        width: 100%;
+        &:focus
+          outline: none;
+
     & p
-      margin: 0; 
+      margin: 0;
