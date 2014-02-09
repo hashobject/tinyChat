@@ -49,7 +49,7 @@ a
   position: absolute;
   right: 0;
   top: 0;
-  transition: width 0.2s;
+  transition: width 0.2s, height 0.2s;
 
 
   & .note
@@ -60,7 +60,7 @@ a
 
   &.opened
    width: 420px;
-   transition: width 0.2s;
+   transition: width 0.2s, height 0.2s;
 
    & .on-settings-opened
      display: block;
@@ -70,14 +70,13 @@ a
 
   &.closed
     width: 4.5em;
-    transition: width 0.2s;
+    transition: width 0.2s, height 0.2s;
 
     & .on-settings-opened
       display: none;
 
     & .on-settings-closed
       display: block;
-
 
 
 #chat-page
@@ -99,6 +98,12 @@ i.settings-toggle
   top: 0;
   width: 4.5em;
   cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  &:hover
+    opacity: 1;
+    transition: opacity 0.2s;
+
 
   & svg
     position: absolute;
@@ -121,6 +126,8 @@ i.settings-toggle
 
 #invite-link
   padding: .75em 4.5em .75em 1em;
+  height: 3.0em;
+  white-space: nowrap; 
 
 #local-video
   line-height: 0;

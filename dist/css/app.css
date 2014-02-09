@@ -140,11 +140,11 @@ a {
   position: absolute;
   right: 0;
   top: 0;
-  -webkit-transition: width 0.2s;
-  -moz-transition: width 0.2s;
-  -o-transition: width 0.2s;
-  -ms-transition: width 0.2s;
-  transition: width 0.2s;
+  -webkit-transition: width 0.2s, height 0.2s;
+  -moz-transition: width 0.2s, height 0.2s;
+  -o-transition: width 0.2s, height 0.2s;
+  -ms-transition: width 0.2s, height 0.2s;
+  transition: width 0.2s, height 0.2s;
 }
 #chat-settings .note {
   background-color: #2eb497;
@@ -153,11 +153,11 @@ a {
 }
 #chat-settings.opened {
   width: 420px;
-  -webkit-transition: width 0.2s;
-  -moz-transition: width 0.2s;
-  -o-transition: width 0.2s;
-  -ms-transition: width 0.2s;
-  transition: width 0.2s;
+  -webkit-transition: width 0.2s, height 0.2s;
+  -moz-transition: width 0.2s, height 0.2s;
+  -o-transition: width 0.2s, height 0.2s;
+  -ms-transition: width 0.2s, height 0.2s;
+  transition: width 0.2s, height 0.2s;
 }
 #chat-settings.opened .on-settings-opened {
   display: block;
@@ -167,11 +167,11 @@ a {
 }
 #chat-settings.closed {
   width: 4.5em;
-  -webkit-transition: width 0.2s;
-  -moz-transition: width 0.2s;
-  -o-transition: width 0.2s;
-  -ms-transition: width 0.2s;
-  transition: width 0.2s;
+  -webkit-transition: width 0.2s, height 0.2s;
+  -moz-transition: width 0.2s, height 0.2s;
+  -o-transition: width 0.2s, height 0.2s;
+  -ms-transition: width 0.2s, height 0.2s;
+  transition: width 0.2s, height 0.2s;
 }
 #chat-settings.closed .on-settings-opened {
   display: none;
@@ -193,6 +193,24 @@ i.settings-toggle {
   top: 0;
   width: 4.5em;
   cursor: pointer;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+i.settings-toggle:hover {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 i.settings-toggle svg {
   position: absolute;
@@ -217,6 +235,8 @@ i.settings-toggle svg {
 }
 #invite-link {
   padding: 0.75em 4.5em 0.75em 1em;
+  height: 3em;
+  white-space: nowrap;
 }
 #local-video {
   line-height: 0;

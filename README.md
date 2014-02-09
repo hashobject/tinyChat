@@ -4,6 +4,9 @@
   * loading indicator
   * marketing page
   * favicon
+  * add Google Analytics
+  * add robots.txt
+  * add humans.txt
 
 
 ## Used
@@ -35,3 +38,4 @@
   * send emails to friends
   * tweet to Kevin Rose
   * tweet thta we used goInstant
+  * post on Hacker News and Reddit
