@@ -1,6 +1,9 @@
 page('/', function(){
   $('#landing-page').removeClass('hidden');
   $('#chat-page').addClass('hidden');
+  $('#for-geeks-button').on('click', function(){
+    $('#for-geeks').removeClass('closed');
+  });
   setupLandingPage();
 });
 
@@ -83,7 +86,7 @@ function startChat(roomId){
   };
 
   var setupChatPage = function(pair){
-    $chatPage.removeClass('no-chat');
+    $chatPage.removeClass('no-chat').addClass('remote-video-started');
     $messageInput.on('keydown', function(evt) {
       if (evt.keyCode === 13) {
         var newMessage = $messageInput.val(),
@@ -96,6 +99,7 @@ function startChat(roomId){
   };
 
   var unsetupChatPage = function(){
+    $chatPage.addClass('no-chat').removeClass('remote-video-started');
     $messageInput.off('keydown');
   };
   var renderNewMessage = function(evt){

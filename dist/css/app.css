@@ -148,6 +148,28 @@ a:hover {
 #landing-page-content ul li {
   display: inline-block;
 }
+#for-geeks.closed {
+  display: none;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  -ms-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+#for-geeks:not(.closed) {
+  display: block;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  -ms-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
 #for-geeks-button {
   color: #e66047;
   cursor: pointer;
@@ -248,6 +270,9 @@ a:hover {
 }
 #chat-settings.closed .on-settings-closed {
   display: block;
+}
+#chat-page.local-video-started #chat-info-box {
+  display: none;
 }
 #chat-page.local-video-started #chat-settings.opened .note {
   display: block;
