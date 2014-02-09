@@ -27,9 +27,7 @@
 
 ## Promotions
 
-  * post on forst
   * post on hacker school chatroom
-  * send emails to friends
   * tweet to Kevin Rose
   * tweet thta we used goInstant
   * post on Hacker News and Reddit
