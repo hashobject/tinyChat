@@ -9,7 +9,6 @@
   * fill hackathon form when ready
   * git tag ss14-final && git push --tags
   * follow http://www.staticshowdown.com/app/info/checklist
-  * fix bug with scroll
 
 
 ## Credits
