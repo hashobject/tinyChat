@@ -5,7 +5,6 @@
   "error_page": "404",
   "cache_control": {},
   "routes": {
-    "/*.html": "index.html",
-    "/r/*": "index.html"
+    "/*": "index.html"
   }
 }

@@ -4,7 +4,7 @@ page('/', function(){
   setupLandingPage();
 });
 
-page('/r/:chatId', function(ctx){
+page('/:chatId', function(ctx){
   $('#chat-page').removeClass('hidden');
   $('#landing-page').addClass('hidden');
   var chatId = ctx.params.chatId;
@@ -16,7 +16,7 @@ page.start();
 function setupLandingPage(){
   $('#new-chat-button').on('click', function(){
     var newChatId = uuid.v4();
-    page.show('/r/' + newChatId);
+    page.show('/' + newChatId);
   });
 }
 
