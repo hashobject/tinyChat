@@ -66,14 +66,17 @@
 
 #chat-page
   &.local-video-started
-    & #chat-info-box
-      display: none;
+    &:not(.no-chat)
+      & #chat-info-box
+        display: none;
     & #chat-settings.opened
       & .note
         display: block;
-  // &.remote-video-started 
-  //   & #chat-info-box
-  //   & 
+   &.remote-video-started 
+     & #chat-info-box
+       display: none;
+     & #invite-link
+       visibility: hidden;
 
  &:not(.local-video-started)
     & #chat-settings.opened

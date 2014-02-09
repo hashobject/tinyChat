@@ -271,11 +271,17 @@ a:hover {
 #chat-settings.closed .on-settings-closed {
   display: block;
 }
-#chat-page.local-video-started #chat-info-box {
+#chat-page.local-video-started:not(.no-chat) #chat-info-box {
   display: none;
 }
 #chat-page.local-video-started #chat-settings.opened .note {
   display: block;
+}
+#chat-page.remote-video-started #chat-info-box {
+  display: none;
+}
+#chat-page.remote-video-started #invite-link {
+  visibility: hidden;
 }
 :not(.local-video-started) #chat-settings.opened .note {
   display: none;
