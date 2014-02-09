@@ -158,8 +158,12 @@ function startChat(roomId){
       console.log('started');
       // TODO (anton) show some progress here maybe.
       if(err){
-        newInfoMessage('Something went wrong. Try to reload the page!');
-        throw err;
+        if(err.name && err.name === 'PermissionDeniedError'){
+          newInfoMessage('You need to allow camera access. Reload the page and try again.');
+        }else{
+          newInfoMessage('Something went wrong. Try to reload the page!');
+          throw err;
+        }
       }
     });
 
