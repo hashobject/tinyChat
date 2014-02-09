@@ -1,6 +1,5 @@
 ## TODO
 
-  * put note that demo might not work!
   * fill hackathon form when ready
   * git tag ss14-final && git push --tags
   * follow http://www.staticshowdown.com/app/info/checklist
@@ -28,7 +27,6 @@
 ## Promotions
 
   * post on hacker school chatroom
-  * tweet to Kevin Rose
-  * tweet thta we used goInstant
+  * tweet that we used goInstant
   * post on Hacker News and Reddit
   * on twitter ask Devrim to vote for us

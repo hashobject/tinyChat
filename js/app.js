@@ -41,7 +41,7 @@ function startChat(roomId){
       $inviteLink = $('#invite-link a');
 
   var inviteLink = "mailto:?subject=Let's chat together";
-  inviteLink += '&body=Join me on '+ window.location.href;
+  inviteLink += '&body=Join me on '+ window.location.origin + '/' + roomId;
   $inviteLink.attr('href', inviteLink);
   // reference to the pair.
   var pair = null;
