@@ -5,7 +5,6 @@
   * marketing page
   * favicon
   * add Google Analytics
-  * add robots.txt
   * add humans.txt
 
 

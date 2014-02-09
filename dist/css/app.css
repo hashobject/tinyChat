@@ -201,6 +201,10 @@ i.settings-toggle {
   -o-transition: opacity 0.2s;
   -ms-transition: opacity 0.2s;
   transition: opacity 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 i.settings-toggle:hover {
   opacity: 1;
