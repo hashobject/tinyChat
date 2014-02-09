@@ -5,7 +5,7 @@
   * marketing page
   * favicon
   * add Google Analytics
-  * add humans.txt
+  * scroll messages to bottom after adding
 
 
 ## Used
