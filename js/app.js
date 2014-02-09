@@ -28,6 +28,7 @@ function startChat(roomId){
   // DOM refs
   var $chatPage = $('#chat-page'),
       $chatSettings = $('#chat-settings'),
+      $chatInfoMessage = $('#chat-info-box'),
       $localVideo = $('#local-video'),
       $remoteVideo = $('#remote-video'),
       $messageInputContainer = $('#message-input'),
@@ -54,6 +55,11 @@ function startChat(roomId){
   // make messages draggable
   $messages.drags({handle: 'ul'});
 
+  var newInfoMessage = function(msg){
+    $chatInfoMessage.html(msg);
+    $chatPage.addClass('no-chat');
+  };
+
 
   var renderMessage = function(message, ts, mine){
     var html = '<li ';
@@ -77,7 +83,7 @@ function startChat(roomId){
   };
 
   var setupChatPage = function(pair){
-
+    $chatPage.removeClass('no-chat');
     $messageInput.on('keydown', function(evt) {
       if (evt.keyCode === 13) {
         var newMessage = $messageInput.val(),
@@ -101,12 +107,11 @@ function startChat(roomId){
   goinstant.connect(url, {room: roomId}, function(err, platformObj, roomObj){
 
     if(err){
-      // TODO (anton) show error and tell user to reload the page
+      newInfoMessage('Something went wrong. Try to reload the page!');
       throw err;
     }
     if(!goinstant.integrations.GoRTC.support){
-      // TODO (anton) show error and tell user to reload the page
-      window.alert('Your browser does not support video chat');
+      newInfoMessage('Your browser does not support video chat. Time to try modern browser?');
       return;
     }
 
@@ -145,7 +150,7 @@ function startChat(roomId){
         peer.video.parentNode.removeChild(peer.video);
         pair = null;
         unsetupChatPage();
-        // TODO (anton) we need to notify that user left chat and room is empty
+        newInfoMessage('Seems like you are alone now...');
       }
     });
 
@@ -153,7 +158,7 @@ function startChat(roomId){
       console.log('started');
       // TODO (anton) show some progress here maybe.
       if(err){
-        // TODO (show error and tell user to refresh the page)
+        newInfoMessage('Something went wrong. Try to reload the page!');
         throw err;
       }
     });

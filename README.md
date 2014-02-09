@@ -1,9 +1,9 @@
 ## TODO
 
   * 404 page?
+  * hide invitation if you are second person in the room
   * loading indicator
   * marketing page. text
-  * favicon
   * add Google Analytics
   * add twitter widget from hackathon page
   * fill hackathon form when ready
