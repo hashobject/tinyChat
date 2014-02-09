@@ -23,6 +23,17 @@
   & ul li
     display: inline-block;
 
+
+#for-geeks.closed
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+#for-geeks:not(.closed)
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s;
+
 #for-geeks-button
   color: #e66047;
   cursor: pointer;

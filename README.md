@@ -43,3 +43,7 @@
   * post on Hacker News and Reddit
   * send to Pasha
   * on twitter ask Devrim to vote for us
+
+
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ss14-team-176.divshot.io" data-text="Check out undefined by hashobject" data-via="staticshowdown">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
