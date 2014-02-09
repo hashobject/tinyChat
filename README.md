@@ -1,14 +1,15 @@
 ## TODO
 
-  * 404 page
+  * 404 page?
   * loading indicator
-  * marketing page
+  * marketing page. text
   * favicon
   * add Google Analytics
   * add twitter widget from hackathon page
   * fill hackathon form when ready
   * git tag ss14-final && git push --tags
   * follow http://www.staticshowdown.com/app/info/checklist
+  * fix bug with scroll
 
 
 ## Credits
