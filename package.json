@@ -4,6 +4,7 @@
   "description": "Tinychat applicatiom",
   "private": true,
   "scripts": {
+    "dev": "grunt build-prod; divshot push",
     "prod": "grunt build-prod; divshot push production"
   },
   "repository": {
