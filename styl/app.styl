@@ -98,6 +98,7 @@ i.settings-toggle
   width: 420px;
 
   & li
+  & #message-input
     background: rgba(0,0,0,0.6);
     border-left-width: 0.5em;
     border-left-style: solid;
@@ -108,19 +109,19 @@ i.settings-toggle
     &.not-mine
       border-left-color: #e66047;
 
-    &#message-input
-      padding: 0;
+  & #message-input
+    padding: 0;
 
-      & input
-        padding: .75em 1.5em .75em 1em;
-        background-color: transparent;
-        border: none;
-        box-sizing: border-box;
-        color: #bebebe;
-        font-size: 1em;
-        width: 100%;
-        &:focus
-          outline: none;
+    & input
+      padding: .75em 1.5em .75em 1em;
+      background-color: transparent;
+      border: none;
+      box-sizing: border-box;
+      color: #bebebe;
+      font-size: 1em;
+      width: 100%;
+      &:focus
+        outline: none;
 
     & p
       margin: 0;

@@ -8,6 +8,7 @@
   * fix mailto link
   * remove /r/ from url
   * try changing netwrok type connection
+  * test scrolling issue in #messages. Probably max-height css atribute should be set and scrolling
 
 
 ## Used

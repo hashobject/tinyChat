@@ -189,23 +189,26 @@ i.settings-toggle svg {
 #messages {
   width: 420px;
 }
-#messages li {
+#messages li,
+#messages #message-input {
   background: rgba(0,0,0,0.6);
   border-left-width: 0.5em;
   border-left-style: solid;
   margin-bottom: 1px;
   padding: 0.75em 1.5em 0.75em 1em;
 }
-#messages li.mine {
+#messages li.mine,
+#messages #message-input.mine {
   border-left-color: #2eb497;
 }
-#messages li.not-mine {
+#messages li.not-mine,
+#messages #message-input.not-mine {
   border-left-color: #e66047;
 }
-#messages li#message-input {
+#messages #message-input {
   padding: 0;
 }
-#messages li#message-input input {
+#messages #message-input input {
   padding: 0.75em 1.5em 0.75em 1em;
   background-color: transparent;
   border: none;
@@ -216,9 +219,9 @@ i.settings-toggle svg {
   font-size: 1em;
   width: 100%;
 }
-#messages li#message-input input:focus {
+#messages #message-input input:focus {
   outline: none;
 }
-#messages li p {
+#messages #message-input p {
   margin: 0;
 }
