@@ -121,7 +121,7 @@ function startChat(roomId){
 
     window.goRTC = new goinstant.integrations.GoRTC({
       room: roomObj,
-      debug: true,
+      debug: false,
       video: true,
       audio: false
     });
@@ -138,10 +138,8 @@ function startChat(roomId){
     });
 
     goRTC.on('peerStreamAdded', function(peer){
-      console.log('peer added. all peers', goRTC.webrtc.peers);
       // assign peer to only possible pair. 
       if(!pair){
-        // TODO (anton) check simple page reload. we need to track amount of peers
         pair = peer;
         chan(pair).onmessage = renderNewMessage;
         $remoteVideo.append(peer.video);
@@ -159,8 +157,6 @@ function startChat(roomId){
     });
 
     goRTC.start(function(err){
-      console.log('started');
-      // TODO (anton) show some progress here maybe.
       if(err){
         if(err.name && err.name === 'PermissionDeniedError'){
           newInfoMessage('You need to allow camera access. Reload the page and try again.');
