@@ -26,14 +26,11 @@
 
 ## Promotions
 
-  * post on dribbble
   * post on forst
-  * post on twitter
   * post on hacker school chatroom
   * send email to Manny
   * send emails to friends
   * tweet to Kevin Rose
   * tweet thta we used goInstant
   * post on Hacker News and Reddit
-  * send to Pasha
   * on twitter ask Devrim to vote for us
