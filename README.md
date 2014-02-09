@@ -5,7 +5,6 @@
   * marketing page
   * favicon
   * add Google Analytics
-  * scroll messages to bottom after adding
 
 
 ## Used

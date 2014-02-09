@@ -33,6 +33,7 @@ function startChat(roomId){
       $messageInputContainer = $('#message-input'),
       $messageInput = $messageInputContainer.find('input'),
       $messages = $('#messages'),
+      $messagesList = $messages.find('ul'),
       $inviteLink = $('#invite-link a');
 
   var inviteLink = "mailto:?subject=Let's chat together";
@@ -60,7 +61,8 @@ function startChat(roomId){
     }
     html += message;
     html += '</li>';
-    $messages.find('ul').append(html);
+    $messagesList.append(html);
+    $messagesList.animate({scrollTop: $messagesList.height()}, 500);
   };
 
   var chan = function(pair){

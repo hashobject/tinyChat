@@ -136,6 +136,7 @@ a {
   display: none;
 }
 #chat-settings {
+  z-index: 2;
   background-color: #1f282d;
   position: absolute;
   right: 0;
