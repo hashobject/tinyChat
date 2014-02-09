@@ -779,6 +779,9 @@ function startChat(roomId){
     $chatSettings.removeClass('closed').addClass('opened');
   });
 
+  // make messages draggable
+  $messages.drags({handle: 'ul'});
+
 
   var renderMessage = function(message, ts, mine){
     var html = '<li ';
@@ -801,7 +804,6 @@ function startChat(roomId){
 
   var setupChatPage = function(pair){
 
-    $messages.drags({handle: 'ul'});
     $messageInput.on('keydown', function(evt) {
       if (evt.keyCode === 13) {
         var newMessage = $messageInput.val(),
@@ -812,18 +814,24 @@ function startChat(roomId){
       }
     });
   };
+
+  var unsetupChatPage = function(){
+    $messageInput.off('keydown');
+  };
   var renderNewMessage = function(evt){
     var messageObj = JSON.parse(evt.data);
     renderMessage(messageObj.msg, Date.now(), false);
   };
 
   // Connect to GoInstant
-  goinstant.connect(url, {room: roomId}, function(err, platformObj, roomObj) {
+  goinstant.connect(url, {room: roomId}, function(err, platformObj, roomObj){
 
-    if (err) {
+    if(err){
+      // TODO (anton) show error and tell user to reload the page
       throw err;
     }
-    if (!goinstant.integrations.GoRTC.support) {
+    if(!goinstant.integrations.GoRTC.support){
+      // TODO (anton) show error and tell user to reload the page
       window.alert('Your browser does not support video chat');
       return;
     }
@@ -835,19 +843,19 @@ function startChat(roomId){
       audio: false
     });
 
-    goRTC.on('localStream', function() {
+    goRTC.on('localStream', function(){
       $localVideo.append(goRTC.localVideo);
       $chatPage.addClass('local-video-started');
     });
 
-    goRTC.on('localStreamStopped', function() {
-      if (goRTC.localVideo.parentNode) {
+    goRTC.on('localStreamStopped', function(){
+      if(goRTC.localVideo.parentNode) {
         goRTC.localVideo.parentNode.removeChild(goRTC.localVideo);
       }
     });
 
-    goRTC.on('peerStreamAdded', function(peer) {
-      console.log("peer added. all peers", goRTC.webrtc.peers);
+    goRTC.on('peerStreamAdded', function(peer){
+      console.log('peer added. all peers', goRTC.webrtc.peers);
       // assign peer to only possible pair. 
       if(!pair){
         // TODO (anton) check simple page reload. we need to track amount of peers
@@ -858,18 +866,20 @@ function startChat(roomId){
       }
     });
 
-    goRTC.on('peerStreamRemoved', function(peer) {
-      if (peer.video && peer.video.parentNode) {
+    goRTC.on('peerStreamRemoved', function(peer){
+      if(peer.video && peer.video.parentNode){
         peer.video.parentNode.removeChild(peer.video);
-        // TODO (anton) we need to do some DOM manipulatios here. release resources, notify that user left chat.
         pair = null;
+        unsetupChatPage();
+        // TODO (anton) we need to notify that user left chat and room is empty
       }
     });
 
-    goRTC.start(function(err) {
+    goRTC.start(function(err){
       console.log('started');
       // TODO (anton) show some progress here maybe.
-      if (err) {
+      if(err){
+        // TODO (show error and tell user to refresh the page)
         throw err;
       }
     });
