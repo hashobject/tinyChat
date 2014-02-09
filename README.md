@@ -5,23 +5,25 @@
   * marketing page
   * favicon
   * add Google Analytics
+  * add twitter widget from hackathon page
+  * fill hackathon form when ready
 
 
-## Used
+## Credits
 
-  * goinstant
-  * webrtc
-  * svg
-  * css filters
-  * grunt
-  * underscore
-  * page.js
-  * drags.js
-  * jquery
-  * uuid
-  * jade
-  * stylus
-  * nib?  
+  * GoInstant https://goinstant.com/
+  * WebRTC
+  * SVG
+  * CSS filters
+  * grunt http://gruntjs.com/
+  * underscore.js http://underscorejs.org/
+  * page.js https://github.com/visionmedia/page.js
+  * drags.js http://css-tricks.com/snippets/jquery/draggable-without-jquery-ui/
+  * jquery http://jquery.com/
+  * uuid https://github.com/broofa/node-uuid
+  * jade http://jade-lang.com/
+  * stylus https://github.com/LearnBoost/stylus
+  * nib visionmedia.github.io/nib/
 
   * mention Kevin Rose's 'tiny' idea
 
