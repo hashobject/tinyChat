@@ -1,8 +1,5 @@
 ## TODO
 
-  * 404 page?
-  * add Google Analytics
-  * add twitter widget from hackathon page
   * fill hackathon form when ready
   * git tag ss14-final && git push --tags
   * follow http://www.staticshowdown.com/app/info/checklist
@@ -29,7 +26,7 @@
 
 ## Promotions
 
-  * post on dribbble  
+  * post on dribbble
   * post on forst
   * post on twitter
   * post on hacker school chatroom
