@@ -1,14 +1,16 @@
 #landing-page
   background: url('pattern.gif');
   min-height: 100%;
-  padding-top: 3em;
 
 #landing-page-content
   background-color: #1f282d;
+  box-sizing: border-box;
   color: white;
-  max-width: 800px;
-  margin: 2em auto 0;
+  max-width: 900px;
+  margin: 0 auto;
   padding: 4.5em 7em;
+  position: relative;
+  top: 4em;
 
   & .logo
     margin-bottom: 3em;
@@ -24,7 +26,11 @@
   background-color: #2eb497;
   border: none;
   color: white;
+  cursor: pointer;
   display: block;
   font-size: 1em;
   margin: 4em auto 0;
   padding: .75em 2em;
+  transition: background-color 350ms;
+  &:hover
+    background-color: #0F9E7F;
