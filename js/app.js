@@ -65,7 +65,9 @@ function startChat(roomId){
     html += message;
     html += '</li>';
     $messagesList.append(html);
-    $messagesList.animate({scrollTop: $messagesList.height()}, 500);
+    var $allMessages = $('#messages ul li');
+    var scrollSize = $allMessages.innerHeight() * $allMessages.length;
+    $messagesList.animate({scrollTop: scrollSize}, 300);
   };
 
   var chan = function(pair){
