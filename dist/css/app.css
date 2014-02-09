@@ -100,9 +100,15 @@ body {
   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
   width: 100%;
 }
+h2 {
+  text-transform: uppercase;
+}
 a {
   color: #2eb497;
   text-decoration: none;
+}
+a:hover {
+  color: #0f9e7f;
 }
 ::-webkit-input-placeholder {
   color: #a3a3a3;
@@ -129,7 +135,6 @@ a {
   max-width: 900px;
   margin: 0 auto;
   padding: 4.5em 7em;
-  position: relative;
   top: 4em;
 }
 #landing-page-content .logo {
@@ -138,9 +143,17 @@ a {
 }
 #landing-page-content p {
   margin-bottom: 0.75em;
+  margin-top: 0.75em;
 }
-#landing-page-content a {
-  color: #2eb497;
+#landing-page-content ul li {
+  display: inline-block;
+}
+#for-geeks-button {
+  color: #e66047;
+  cursor: pointer;
+}
+#for-geeks-button svg {
+  vertical-align: middle;
 }
 #new-chat-button {
   background-color: #2eb497;
