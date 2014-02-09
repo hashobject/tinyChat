@@ -140,12 +140,50 @@ a {
   position: absolute;
   right: 0;
   top: 0;
-  width: 420px;
+  -webkit-transition: width 0.2s;
+  -moz-transition: width 0.2s;
+  -o-transition: width 0.2s;
+  -ms-transition: width 0.2s;
+  transition: width 0.2s;
 }
 #chat-settings .note {
   background-color: #2eb497;
   padding: 0.75em 1.5em 0.75em 1em;
   text-shadow: none;
+}
+#chat-settings.opened {
+  width: 420px;
+  -webkit-transition: width 0.2s;
+  -moz-transition: width 0.2s;
+  -o-transition: width 0.2s;
+  -ms-transition: width 0.2s;
+  transition: width 0.2s;
+}
+#chat-settings.opened .on-settings-opened {
+  display: block;
+}
+#chat-settings.opened .on-settings-closed {
+  display: none;
+}
+#chat-settings.closed {
+  width: 4.5em;
+  -webkit-transition: width 0.2s;
+  -moz-transition: width 0.2s;
+  -o-transition: width 0.2s;
+  -ms-transition: width 0.2s;
+  transition: width 0.2s;
+}
+#chat-settings.closed .on-settings-opened {
+  display: none;
+}
+#chat-settings.closed .on-settings-closed {
+  display: block;
+}
+#chat-page.local-video-started #chat-settings.opened .note {
+  display: block;
+}
+:not(.local-video-started) #chat-settings.opened .note {
+  display: none;
 }
 i.settings-toggle {
   display: inline-block;
@@ -154,6 +192,7 @@ i.settings-toggle {
   right: 0;
   top: 0;
   width: 4.5em;
+  cursor: pointer;
 }
 i.settings-toggle svg {
   position: absolute;
@@ -188,6 +227,10 @@ i.settings-toggle svg {
 }
 #messages {
   width: 420px;
+}
+#messages ul {
+  max-height: 400px;
+  overflow-y: auto;
 }
 #messages li,
 #messages #message-input {

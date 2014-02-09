@@ -12,16 +12,16 @@ html(lang='en')
     #landing-page.page.hidden
       button#new-chat-button New chat
     #chat-page.page.hidden
-      #chat-settings
-        i.settings-show.settings-toggle
+      #chat-settings.opened
+        i.settings-show.settings-toggle.on-settings-closed
           include ../design/settings.svg
-        i.settings-hide.settings-toggle
+        i.settings-hide.settings-toggle.on-settings-opened
           include ../design/close.svg
-        #invite-link You need partner to chat with.<br>
+        #invite-link.on-settings-opened You need partner to chat with.<br>
           a(href="", target="_blank") Send an invite
           |.
-        #local-video
-        .note Your video. This is what other person is seeing.
+        #local-video.on-settings-opened
+        .note.on-settings-opened Your video. This is what other person is seeing.
       #chat-box
         #remote-video
         #messages

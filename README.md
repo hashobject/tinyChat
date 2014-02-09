@@ -4,7 +4,6 @@
   * loading indicator
   * marketing page
   * favicon
-  * test scrolling issue in #messages. Probably max-height css atribute should be set and scrolling
 
 
 ## Used

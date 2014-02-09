@@ -26,7 +26,9 @@ function startChat(roomId){
   var url = 'https://goinstant.net/910bc8662f93/staticshowdown';
 
   // DOM refs
-  var $localVideo = $('#local-video'),
+  var $chatPage = $('#chat-page'),
+      $chatSettings = $('#chat-settings'),
+      $localVideo = $('#local-video'),
       $remoteVideo = $('#remote-video'),
       $messageInputContainer = $('#message-input'),
       $messageInput = $messageInputContainer.find('input'),
@@ -38,6 +40,15 @@ function startChat(roomId){
   $inviteLink.attr('href', inviteLink);
   // reference to the pair.
   var pair = null;
+
+
+  $('i.settings-hide').on('click', function(){
+    $chatSettings.removeClass('opened').addClass('closed');
+  });
+
+  $('i.settings-show').on('click', function(){
+    $chatSettings.removeClass('closed').addClass('opened');
+  });
 
 
   var renderMessage = function(message, ts, mine){
@@ -96,6 +107,7 @@ function startChat(roomId){
 
     goRTC.on('localStream', function() {
       $localVideo.append(goRTC.localVideo);
+      $chatPage.addClass('local-video-started');
     });
 
     goRTC.on('localStreamStopped', function() {

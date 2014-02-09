@@ -49,12 +49,46 @@ a
   position: absolute;
   right: 0;
   top: 0;
-  width: 420px;
+  transition: width 0.2s;
+
 
   & .note
     background-color: #2eb497;
     padding: .75em 1.5em .75em 1em;
     text-shadow: none;
+
+
+  &.opened
+   width: 420px;
+   transition: width 0.2s;
+
+   & .on-settings-opened
+     display: block;
+
+   & .on-settings-closed
+     display: none;  
+
+  &.closed
+    width: 4.5em;
+    transition: width 0.2s;
+
+    & .on-settings-opened
+      display: none;
+
+    & .on-settings-closed
+      display: block;
+
+
+
+#chat-page
+  &.local-video-started
+    & #chat-settings.opened
+      & .note
+        display: block;
+ &:not(.local-video-started)
+    & #chat-settings.opened
+      & .note
+        display: none;        
 
 
 i.settings-toggle
@@ -64,6 +98,7 @@ i.settings-toggle
   right: 0;
   top: 0;
   width: 4.5em;
+  cursor: pointer;
 
   & svg
     position: absolute;
@@ -96,6 +131,12 @@ i.settings-toggle
 
 #messages
   width: 420px;
+  
+  & ul
+    // should be done in percentage
+    max-height: 400px;
+    overflow-y: auto;
+
 
   & li
   & #message-input
