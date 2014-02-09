@@ -2,7 +2,7 @@
   "name": "ss14-team-176",
   "root": "./dist",
   "clean_urls": true,
-  "error_page": "404",
+  "error_page": "/",
   "cache_control": {},
   "routes": {
     "/*": "index.html"

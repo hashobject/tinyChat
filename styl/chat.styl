@@ -1,4 +1,4 @@
-#chat-page.no-chat
+#chat-page
   background: url('pattern.gif');
   min-height: 100%;
 
@@ -8,6 +8,7 @@
   position: absolute;
   width: 320px;
   margin-left: -160px;
+  margin-top: 25%;
   padding: .75em 1.5em .75em 1em;
   background-color: #1f282d;
 
@@ -66,14 +67,17 @@
 
 #chat-page
   &.local-video-started
-    & #chat-info-box
-      display: none;
+    &:not(.no-chat)
+      & #chat-info-box
+        display: none;
     & #chat-settings.opened
       & .note
         display: block;
-  // &.remote-video-started 
-  //   & #chat-info-box
-  //   & 
+   &.remote-video-started 
+     & #chat-info-box
+       display: none;
+     & #invite-link
+       visibility: hidden;
 
  &:not(.local-video-started)
     & #chat-settings.opened
