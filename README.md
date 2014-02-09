@@ -8,6 +8,7 @@
   * add twitter widget from hackathon page
   * fill hackathon form when ready
   * git tag ss14-final && git push --tags
+  * follow http://www.staticshowdown.com/app/info/checklist
 
 
 ## Credits
@@ -41,3 +42,4 @@
   * tweet thta we used goInstant
   * post on Hacker News and Reddit
   * send to Pasha
+  * on twitter ask Devrim to vote for us
