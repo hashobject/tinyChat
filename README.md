@@ -7,6 +7,7 @@
   * add Google Analytics
   * add twitter widget from hackathon page
   * fill hackathon form when ready
+  * git tag ss14-final && git push --tags
 
 
 ## Credits
@@ -39,3 +40,4 @@
   * tweet to Kevin Rose
   * tweet thta we used goInstant
   * post on Hacker News and Reddit
+  * send to Pasha
