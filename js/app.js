@@ -143,7 +143,7 @@ function startChat(roomId){
         peer.video.parentNode.removeChild(peer.video);
         pair = null;
         unsetupChatPage();
-        // TODO (anton) we need to do some DOM manipulatios here. release resources, notify that user left chat.
+        // TODO (anton) we need to notify that user left chat and room is empty
       }
     });
 
