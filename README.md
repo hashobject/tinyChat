@@ -1,5 +1,6 @@
 ## TODO
 
+  * put note that demo might not work!
   * fill hackathon form when ready
   * git tag ss14-final && git push --tags
   * follow http://www.staticshowdown.com/app/info/checklist
@@ -28,7 +29,6 @@
 
   * post on forst
   * post on hacker school chatroom
-  * send email to Manny
   * send emails to friends
   * tweet to Kevin Rose
   * tweet thta we used goInstant
