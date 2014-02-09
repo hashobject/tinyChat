@@ -1,0 +1,36 @@
+#chat-page.page.hidden.no-chat
+  #chat-info-box You need to invite someone to this chat and allow camera access
+  #chat-settings.opened
+    i.settings-show.settings-toggle.on-settings-closed
+      include ../design/settings.svg
+    i.settings-hide.settings-toggle.on-settings-opened
+      include ../design/close.svg
+    #invite-link.on-settings-opened You need partner to chat with.<br>
+      a(href="", target="_blank") Send an invite
+      |.
+    #local-video.on-settings-opened
+    .note.on-settings-opened Your video. This is what other person is seeing.
+  #chat-box
+    #remote-video
+    #messages
+      ul 
+        //- li.mine
+        //-   p cos for me it's like: switching to master - no changes in files; switching to version-1 - changes are visible
+        //- li.not-mine
+        //-   p very tricky
+        //- li.mine
+        //-   p so you won't have to wait for anyone
+        //- li.mine
+        //-   p cos for me it's like: switching to master - no changes in files; switching to version-1 - changes are visible
+        //- li.not-mine
+        //-   p very tricky
+        //- li.mine
+        //-   p so you won't have to wait for anyone
+        //- li.mine
+        //-   p cos for me it's like: switching to master - no changes in files; switching to version-1 - changes are visible
+        //- li.not-mine
+        //-   p very tricky
+        //- li.mine
+        //-   p so you won't have to wait for anyone                            
+      #message-input.mine
+        input(placeholder="Type in here")
