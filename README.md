@@ -27,7 +27,7 @@
   * stylus https://github.com/LearnBoost/stylus
   * nib visionmedia.github.io/nib/
 
-  * mention Kevin Rose's 'tiny' idea
+  * mention Kevin Rose's 'tiny' idea https://www.youtube.com/watch?v=N6UW0JY5PUs
 
 
 ## Promotions
