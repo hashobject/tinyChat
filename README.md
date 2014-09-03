@@ -24,6 +24,4 @@ Inspired by Kevin Rose's 'tiny' idea https://www.youtube.com/watch?v=N6UW0JY5PUs
 ## Promotions
 
   * post on hacker school chatroom
-  * tweet that we used goInstant
-  * post on Hacker News and Reddit
   * on twitter ask Devrim to vote for us
