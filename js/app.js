@@ -106,7 +106,7 @@ function startChat(roomId){
   };
 
   // Connect to GoInstant
-  var webrtc = new SimpleWebRTC({
+  window.webrtc = new SimpleWebRTC({
     // the id/element dom element that will hold "our" video
     localVideoEl: 'local-video',
     // the id/element dom element that will hold remote videos
@@ -117,6 +117,10 @@ function startChat(roomId){
         video: true,
         audio: false
     },
+  });
+
+  webrtc.createRoom(val, function (err, name) {
+    console.log('room was created', err, name);
   });
 
   webrtc.on('readyToCall', function () {
