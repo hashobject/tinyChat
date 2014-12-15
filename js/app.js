@@ -25,8 +25,6 @@ function setupLandingPage(){
 
 
 function startChat(roomId){
-  // Connect URL
-  var url = 'https://goinstant.net/910bc8662f93/staticshowdown';
 
   // DOM refs
   var $chatPage = $('#chat-page'),
@@ -108,64 +106,41 @@ function startChat(roomId){
   };
 
   // Connect to GoInstant
-  goinstant.connect(url, {room: roomId}, function(err, platformObj, roomObj){
-
-    if(err){
-      newInfoMessage('Something went wrong. Try to reload the page!');
-      throw err;
-    }
-    if(!goinstant.integrations.GoRTC.support){
-      newInfoMessage('Your browser does not support video chat. Time to try modern browser?');
-      return;
-    }
-
-    window.goRTC = new goinstant.integrations.GoRTC({
-      room: roomObj,
-      debug: false,
-      video: true,
-      audio: false
-    });
-
-    goRTC.on('localStream', function(){
-      $localVideo.append(goRTC.localVideo);
-      $chatPage.addClass('local-video-started');
-    });
-
-    goRTC.on('localStreamStopped', function(){
-      if(goRTC.localVideo.parentNode) {
-        goRTC.localVideo.parentNode.removeChild(goRTC.localVideo);
-      }
-    });
-
-    goRTC.on('peerStreamAdded', function(peer){
-      // assign peer to only possible pair. 
-      if(!pair){
-        pair = peer;
-        chan(pair).onmessage = renderNewMessage;
-        $remoteVideo.append(peer.video);
-        setupChatPage(pair);
-      }
-    });
-
-    goRTC.on('peerStreamRemoved', function(peer){
-      if(peer.video && peer.video.parentNode){
-        peer.video.parentNode.removeChild(peer.video);
-        pair = null;
-        unsetupChatPage();
-        newInfoMessage('Seems like you are alone now...');
-      }
-    });
-
-    goRTC.start(function(err){
-      if(err){
-        if(err.name && err.name === 'PermissionDeniedError'){
-          newInfoMessage('You need to allow camera access. Reload the page and try again.');
-        }else{
-          newInfoMessage('Something went wrong. Try to reload the page!');
-          throw err;
-        }
-      }
-    });
-
+  var webrtc = new SimpleWebRTC({
+    // the id/element dom element that will hold "our" video
+    localVideoEl: 'local-video',
+    // the id/element dom element that will hold remote videos
+    remoteVideosEl: 'remote-video',
+    // immediately ask for camera access
+    autoRequestMedia: true,
+    media: {
+        video: true,
+        audio: false
+    },
   });
+
+  webrtc.on('readyToCall', function () {
+    // join room
+    webrtc.joinRoom(roomId);
+    console.log('ready to call');
+  });
+
+  webrtc.handlePeerStreamAdded = function (peer) {
+    // assign peer to only possible pair.
+    if(!pair){
+      pair = peer;
+      chan(pair).onmessage = renderNewMessage;
+      $remoteVideo.append(peer.video);
+      setupChatPage(pair);
+    }
+  };
+
+  webrtc.handlePeerStreamRemoved = function (peer) {
+    if(peer.video && peer.video.parentNode){
+      peer.video.parentNode.removeChild(peer.video);
+      pair = null;
+      unsetupChatPage();
+      newInfoMessage('Seems like you are alone now...');
+    }
+  }
 }

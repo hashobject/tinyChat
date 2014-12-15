@@ -51,13 +51,6 @@ module.exports = function(grunt) {
       }
     },
 
-    uglify: {
-      minimize: {
-        files: {
-          'dist/js/app.js': ['dist/js/app.js']
-        }
-      }
-    },
 
     watch: {
       src: {
@@ -73,9 +66,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('build', ['jade:compile', 'stylus:compile', 'concat:dist']);
-  grunt.registerTask('build-prod', ['jade:compile', 'stylus:compile_and_compress', 'concat:dist', 'uglify:minimize']);
+  grunt.registerTask('build-prod', ['jade:compile', 'stylus:compile_and_compress', 'concat:dist']);
 
 };
