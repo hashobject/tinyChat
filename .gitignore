@@ -3,3 +3,4 @@ node_modules/
 dist/index.html
 dist/css/
 dist/js/
+.divshot-cache

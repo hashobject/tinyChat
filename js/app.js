@@ -119,7 +119,7 @@ function startChat(roomId){
     },
   });
 
-  webrtc.createRoom(val, function (err, name) {
+  webrtc.createRoom(roomId, function (err, name) {
     console.log('room was created', err, name);
   });
 
