@@ -129,7 +129,7 @@ function startChat(roomId){
     console.log('ready to call');
   });
 
-  webrtc.handlePeerStreamAdded = function (peer) {
+  webrtc.on('videoAdded', function (video, peer) {
     console.log('peer added', peer);
     // assign peer to only possible pair.
     if(!pair){
@@ -138,14 +138,14 @@ function startChat(roomId){
       $remoteVideo.append(peer.video);
       setupChatPage(pair);
     }
-  };
+  });
 
-  webrtc.handlePeerStreamRemoved = function (peer) {
+  webrtc.on('videoRemoved', function (video, peer) {
     if(peer.video && peer.video.parentNode){
       peer.video.parentNode.removeChild(peer.video);
       pair = null;
       unsetupChatPage();
       newInfoMessage('Seems like you are alone now...');
     }
-  }
+  });
 }
