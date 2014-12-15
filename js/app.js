@@ -130,6 +130,7 @@ function startChat(roomId){
   });
 
   webrtc.handlePeerStreamAdded = function (peer) {
+    console.log('peer added', peer);
     // assign peer to only possible pair.
     if(!pair){
       pair = peer;
