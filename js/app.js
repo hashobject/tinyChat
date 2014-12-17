@@ -128,14 +128,16 @@ function startChat(roomId){
     },
   });
 
-  webrtc.createRoom(roomId, function (err, name) {
-    console.log('room was created', err, name);
-  });
 
   webrtc.on('readyToCall', function () {
-    // join room
-    webrtc.joinRoom(roomId);
     console.log('ready to call');
+    webrtc.createRoom(roomId, function (err, name) {
+      if (err) {
+        // join room
+        webrtc.joinRoom(roomId);
+      }
+      console.log('room was created', err, name);
+    });
   });
 
   webrtc.on('videoAdded', function (video, peer) {
@@ -143,14 +145,12 @@ function startChat(roomId){
     // assign peer to only possible pair.
     if(!pair){
       pair = peer;
-      $remoteVideo.append(peer.video);
       setupChatPage(pair);
     }
   });
 
   webrtc.on('videoRemoved', function (video, peer) {
-    if(peer.video && peer.video.parentNode){
-      peer.video.parentNode.removeChild(peer.video);
+    if(peer){
       pair = null;
       unsetupChatPage();
       newInfoMessage('Seems like you are alone now...');
