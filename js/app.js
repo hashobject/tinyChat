@@ -84,23 +84,32 @@ function startChat(roomId){
   };
 
   var setupChatPage = function(pair){
+    var dc = pair.getDataChannel('messagechannel');
     $chatPage.removeClass('no-chat').addClass('remote-video-started');
     $messageInput.on('keydown', function(evt) {
       if (evt.keyCode === 13) {
         var newMessage = $messageInput.val(),
             messageStr = JSON.stringify({ time: Date.now(), msg: newMessage});
         renderMessage(newMessage, Date.now(), true);
-        chan(pair).send(messageStr);
+      dc.onmessage = renderNewMessage;
+      dc.onopen = function () {
+        console.log('datachannel opened');
+      };
+      if (dc.readyState === 'open') {
+        dc.send(messageStr);
+      }
         $messageInput.val('');
       }
     });
   };
+
 
   var unsetupChatPage = function(){
     $chatPage.addClass('no-chat').removeClass('remote-video-started');
     $messageInput.off('keydown');
   };
   var renderNewMessage = function(evt){
+    console.log('received new message');
     var messageObj = JSON.parse(evt.data);
     renderMessage(messageObj.msg, Date.now(), false);
   };
@@ -134,7 +143,6 @@ function startChat(roomId){
     // assign peer to only possible pair.
     if(!pair){
       pair = peer;
-      chan(pair).onmessage = renderNewMessage;
       $remoteVideo.append(peer.video);
       setupChatPage(pair);
     }
