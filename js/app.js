@@ -79,7 +79,7 @@ function startChat(roomId){
 
 
   var setupChatPage = function(pair){
-    var dc = pair.getDataChannel('messagechannel');
+    var dc = pair.getDataChannel(roomId);
 //    dc.onmessage = renderNewMessage;
 //    dc.onopen = function () {
 //      console.log('datachannel opened');
