@@ -81,7 +81,7 @@ function startChat(roomId){
   var setupChatPage = function(pair){
     pair.on('channelMessage', function(peer, channelId, message) {
       console.log('abcd', peer, channelId, message);
-      renderNewMessage(event.payload);
+      renderNewMessage(message.payload);
     });
     //var dc = pair.getDataChannel(roomId);
 //    dc.onmessage = renderNewMessage;
