@@ -79,8 +79,8 @@ function startChat(roomId){
 
 
   var setupChatPage = function(pair){
-    pair.on('channelMessage', function(a, b, c, d, e) {
-      console.log('abcd', a, b, c, d, e);
+    pair.on('channelMessage', function(peer, channelId, message) {
+      console.log('abcd', peer, channelId, message);
     });
     var dc = pair.getDataChannel(roomId);
 //    dc.onmessage = renderNewMessage;
@@ -97,6 +97,7 @@ function startChat(roomId){
       dc.send(JSON.stringify({ time: Date.now(), msg: 'connected'}));
       dc.onmessage = function (event) {
         console.log("Got Data Channel Message:", event.data);
+        renderNewMessage(event);
       };
     };
 
