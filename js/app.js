@@ -145,7 +145,6 @@ function startChat(roomId){
     // assign peer to only possible pair.
     if(!pair){
       pair = peer;
-      $remoteVideo.append(peer.video);
       setupChatPage(pair);
     }
   });
