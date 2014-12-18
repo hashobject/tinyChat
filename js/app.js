@@ -81,30 +81,8 @@ function startChat(roomId){
   var setupChatPage = function(pair){
     pair.on('channelMessage', function(peer, channelId, message) {
       console.log('abcd', peer, channelId, message);
-      renderNewMessage(message.payload);
+      renderMessage(message.payload.msg, false);
     });
-    //var dc = pair.getDataChannel(roomId);
-//    dc.onmessage = renderNewMessage;
-//    dc.onopen = function () {
-//      console.log('datachannel opened');
-//    };
-    //dc.onerror = function (error) {
-    //  console.log("Data Channel Error:", error);
-    //};
-
-
-   // dc.onopen = function () {
-   //   console.log("The Data Channel is Opened");
-   //   dc.send(JSON.stringify({ time: Date.now(), msg: 'connected'}));
-   //   dc.onmessage = function (event) {
-   //     console.log("Got Data Channel Message:", event.data);
-   //     renderNewMessage(event);
-   //   };
-   // };
-
-   // dc.onclose = function () {
-    //  console.log("The Data Channel is Closed");
-    //};
     $chatPage.removeClass('no-chat').addClass('remote-video-started');
     $messageInput.on('keydown', function(evt) {
       if(evt.keyCode === 13) {
@@ -112,10 +90,6 @@ function startChat(roomId){
             messageStr = JSON.stringify({ time: Date.now(), msg: newMessage});
         renderMessage(newMessage, true);
         pair.sendDirectly(roomId, 'message', { time: Date.now(), msg: newMessage});
-        //if(dc.readyState === 'open') {
-        //  console.log('datachannel is open');
-        //  dc.send(messageStr);
-       // }
         $messageInput.val('');
       }
     });
@@ -125,10 +99,6 @@ function startChat(roomId){
   var unsetupChatPage = function(){
     $chatPage.addClass('no-chat').removeClass('remote-video-started');
     $messageInput.off('keydown');
-  };
-  var renderNewMessage = function(message){
-    console.log('received new message', message);
-    renderMessage(message.msg, false);
   };
 
   // Connect to GoInstant
