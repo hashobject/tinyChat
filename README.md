@@ -19,9 +19,3 @@
 
 
 Inspired by Kevin Rose's 'tiny' idea https://www.youtube.com/watch?v=N6UW0JY5PUs.
-
-
-## Promotions
-
-  * post on hacker school chatroom
-  * on twitter ask Devrim to vote for us
