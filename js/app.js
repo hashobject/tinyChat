@@ -80,9 +80,24 @@ function startChat(roomId){
 
   var setupChatPage = function(pair){
     var dc = pair.getDataChannel('messagechannel');
-    dc.onmessage = renderNewMessage;
+//    dc.onmessage = renderNewMessage;
+//    dc.onopen = function () {
+//      console.log('datachannel opened');
+//    };
+    dc.onerror = function (error) {
+      console.log("Data Channel Error:", error);
+    };
+
+    dc.onmessage = function (event) {
+      console.log("Got Data Channel Message:", event.data);
+    };
+
     dc.onopen = function () {
-      console.log('datachannel opened');
+      dataChannel.send("Hello World!");
+    };
+
+    dc.onclose = function () {
+      console.log("The Data Channel is Closed");
     };
     $chatPage.removeClass('no-chat').addClass('remote-video-started');
     $messageInput.on('keydown', function(evt) {
