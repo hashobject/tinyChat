@@ -81,29 +81,30 @@ function startChat(roomId){
   var setupChatPage = function(pair){
     pair.on('channelMessage', function(peer, channelId, message) {
       console.log('abcd', peer, channelId, message);
+      renderNewMessage(event.payload);
     });
-    var dc = pair.getDataChannel(roomId);
+    //var dc = pair.getDataChannel(roomId);
 //    dc.onmessage = renderNewMessage;
 //    dc.onopen = function () {
 //      console.log('datachannel opened');
 //    };
-    dc.onerror = function (error) {
-      console.log("Data Channel Error:", error);
-    };
+    //dc.onerror = function (error) {
+    //  console.log("Data Channel Error:", error);
+    //};
 
 
-    dc.onopen = function () {
-      console.log("The Data Channel is Opened");
-      dc.send(JSON.stringify({ time: Date.now(), msg: 'connected'}));
-      dc.onmessage = function (event) {
-        console.log("Got Data Channel Message:", event.data);
-        renderNewMessage(event);
-      };
-    };
+   // dc.onopen = function () {
+   //   console.log("The Data Channel is Opened");
+   //   dc.send(JSON.stringify({ time: Date.now(), msg: 'connected'}));
+   //   dc.onmessage = function (event) {
+   //     console.log("Got Data Channel Message:", event.data);
+   //     renderNewMessage(event);
+   //   };
+   // };
 
-    dc.onclose = function () {
-      console.log("The Data Channel is Closed");
-    };
+   // dc.onclose = function () {
+    //  console.log("The Data Channel is Closed");
+    //};
     $chatPage.removeClass('no-chat').addClass('remote-video-started');
     $messageInput.on('keydown', function(evt) {
       if(evt.keyCode === 13) {
