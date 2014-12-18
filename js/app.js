@@ -88,13 +88,13 @@ function startChat(roomId){
       console.log("Data Channel Error:", error);
     };
 
-    dc.onmessage = function (event) {
-      console.log("Got Data Channel Message:", event.data);
-    };
 
     dc.onopen = function () {
-       console.log("The Data Channel is Opened");
+      console.log("The Data Channel is Opened");
       dc.send(JSON.stringify({ time: Date.now(), msg: 'connected'}));
+      dc.onmessage = function (event) {
+        console.log("Got Data Channel Message:", event.data);
+      };
     };
 
     dc.onclose = function () {
