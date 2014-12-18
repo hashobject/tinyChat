@@ -93,7 +93,8 @@ function startChat(roomId){
     };
 
     dc.onopen = function () {
-      dc.send("Hello World!");
+       console.log("The Data Channel is Opened");
+      dc.send(JSON.stringify({ time: Date.now(), msg: 'connected'}));
     };
 
     dc.onclose = function () {
