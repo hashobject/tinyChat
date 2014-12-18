@@ -79,6 +79,9 @@ function startChat(roomId){
 
 
   var setupChatPage = function(pair){
+    pair.on('channelMessage', function(a, b, c, d, e) {
+      console.log('abcd', a, b, c, d, e);
+    });
     var dc = pair.getDataChannel(roomId);
 //    dc.onmessage = renderNewMessage;
 //    dc.onopen = function () {
@@ -106,10 +109,11 @@ function startChat(roomId){
         var newMessage = $messageInput.val(),
             messageStr = JSON.stringify({ time: Date.now(), msg: newMessage});
         renderMessage(newMessage, true);
-        if(dc.readyState === 'open') {
-          console.log('datachannel is open');
-          dc.send(messageStr);
-        }
+        pair.sendDirectly(roomId, 'message', { time: Date.now(), msg: newMessage});
+        //if(dc.readyState === 'open') {
+        //  console.log('datachannel is open');
+        //  dc.send(messageStr);
+       // }
         $messageInput.val('');
       }
     });
