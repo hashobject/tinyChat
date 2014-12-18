@@ -109,7 +109,7 @@ function startChat(roomId){
     $messageInput.off('keydown');
   };
   var renderNewMessage = function(evt){
-    console.log('received new message');
+    console.log('received new message', evt);
     var messageObj = JSON.parse(evt.data);
     renderMessage(messageObj.msg, Date.now(), false);
   };
@@ -129,18 +129,19 @@ function startChat(roomId){
   });
 
 
-  webrtc.on('readyToCall', function () {
+  webrtc.on('readyToCall', function() {
     console.log('ready to call');
     webrtc.createRoom(roomId, function (err, name) {
       if (err) {
         // join room
         webrtc.joinRoom(roomId);
+      } else {
+        console.log('room was created', err, name);
       }
-      console.log('room was created', err, name);
     });
   });
 
-  webrtc.on('videoAdded', function (video, peer) {
+  webrtc.on('videoAdded', function(video, peer) {
     console.log('peer added', peer);
     // assign peer to only possible pair.
     if(!pair){
@@ -149,7 +150,7 @@ function startChat(roomId){
     }
   });
 
-  webrtc.on('videoRemoved', function (video, peer) {
+  webrtc.on('videoRemoved', function(video, peer) {
     if(peer){
       pair = null;
       unsetupChatPage();
