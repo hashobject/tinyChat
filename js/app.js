@@ -126,10 +126,9 @@ function startChat(roomId){
     $chatPage.addClass('no-chat').removeClass('remote-video-started');
     $messageInput.off('keydown');
   };
-  var renderNewMessage = function(evt){
-    console.log('received new message', evt);
-    var messageObj = JSON.parse(evt.data);
-    renderMessage(messageObj.msg, Date.now(), false);
+  var renderNewMessage = function(message){
+    console.log('received new message', message);
+    renderMessage(message.msg, false);
   };
 
   // Connect to GoInstant
