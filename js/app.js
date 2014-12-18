@@ -62,7 +62,7 @@ function startChat(roomId){
   };
 
 
-  var renderMessage = function(message, ts, mine){
+  var renderMessage = function(message, mine){
     var html = '<li ';
     if(mine){
       html += 'class="mine">';
@@ -77,27 +77,23 @@ function startChat(roomId){
     $messagesList.animate({scrollTop: scrollSize}, 300);
   };
 
-  var chan = function(pair){
-    // picking any channel here. Probably unreliable is the key in channels object
-    var channelName = _.first(_.keys(pair.channels));
-    return pair.channels[channelName];
-  };
 
   var setupChatPage = function(pair){
     var dc = pair.getDataChannel('messagechannel');
+    dc.onmessage = renderNewMessage;
+    dc.onopen = function () {
+      console.log('datachannel opened');
+    };
     $chatPage.removeClass('no-chat').addClass('remote-video-started');
     $messageInput.on('keydown', function(evt) {
-      if (evt.keyCode === 13) {
+      if(evt.keyCode === 13) {
         var newMessage = $messageInput.val(),
             messageStr = JSON.stringify({ time: Date.now(), msg: newMessage});
-        renderMessage(newMessage, Date.now(), true);
-      dc.onmessage = renderNewMessage;
-      dc.onopen = function () {
-        console.log('datachannel opened');
-      };
-      if (dc.readyState === 'open') {
-        dc.send(messageStr);
-      }
+        renderMessage(newMessage, true);
+        if(dc.readyState === 'open') {
+          console.log('datachannel is open');
+          dc.send(messageStr);
+        }
         $messageInput.val('');
       }
     });
