@@ -93,7 +93,7 @@ function startChat(roomId){
     };
 
     dc.onopen = function () {
-      dataChannel.send("Hello World!");
+      dc.send("Hello World!");
     };
 
     dc.onclose = function () {
