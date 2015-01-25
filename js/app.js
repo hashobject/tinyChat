@@ -30,8 +30,6 @@ function startChat(roomId){
   var $chatPage = $('#chat-page'),
       $chatSettings = $('#chat-settings'),
       $chatInfoMessage = $('#chat-info-box'),
-      $localVideo = $('#local-video'),
-      $remoteVideo = $('#remote-video'),
       $messageInputContainer = $('#message-input'),
       $messageInput = $messageInputContainer.find('input'),
       $messages = $('#messages'),
@@ -80,7 +78,6 @@ function startChat(roomId){
 
   var setupChatPage = function(pair){
     pair.on('channelMessage', function(peer, channelId, message) {
-      console.log('abcd', peer, channelId, message);
       renderMessage(message.payload.msg, false);
     });
     $chatPage.removeClass('no-chat').addClass('remote-video-started');
@@ -101,7 +98,7 @@ function startChat(roomId){
     $messageInput.off('keydown');
   };
 
-  // Connect to GoInstant
+
   window.webrtc = new SimpleWebRTC({
     // the id/element dom element that will hold "our" video
     localVideoEl: 'local-video',
